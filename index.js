@@ -32,11 +32,11 @@ const magazine = ["h", "e", "r", "e", "a", "r", "e", "s", "o", "m",
     return true
  }
 
- console.log('testing note')
- console.log(canBuildNote(magazine, note))
+//  console.log('testing note')
+//  console.log(canBuildNote(magazine, note))
 
- console.log('testing note2')
- console.log(canBuildNote(magazine, note2))
+//  console.log('testing note2')
+//  console.log(canBuildNote(magazine, note2))
 
  // Another possible solution is to use histograms
 
@@ -52,27 +52,35 @@ const magazine = ["h", "e", "r", "e", "a", "r", "e", "s", "o", "m",
     return histogram
  }
 
- 
+ function buildHistogramWithReduce(arrayOfLetters) {
+    arrayOfLetters.reduce((acc, curEl) => {
+        if (acc[El]) {
+            acc[El] += 1
+        } else {
+            acc[El] = 1
+        }
+    }, {})
+ }
 
  function binaryMatch(magazine, note) {
     let magazineHistogram = buildHistogram(magazine)
     let noteHistogram = buildHistogram(note.replace(/ /g, ''))
     
     for (key in noteHistogram) {
-        if (noteHistogram[key] <= magazineHistogram[key]) {
-            return true
-        } else {
+        if (noteHistogram[key] > magazineHistogram[key]) {
             return false
-        }
+        } 
     }
+
+    return true
  }
 
-//  console.log('testing histogram')
-//  console.log(buildHistogram(magazine))
-//  console.log(buildHistogram(note.replace(/ /g, '')))
-//  console.log(buildHistogram(note2.replace(/ /g, '')))
+ console.log('testing histogram')
+ console.log(buildHistogramWithReduce(magazine))
+ console.log(buildHistogramWithReduce(note.replace(/ /g, '')))
+ console.log(buildHistogramWithReduce(note2.replace(/ /g, '')))
 
- console.log('testing binaryMatch')
- console.log(binaryMatch(magazine, note))
- console.log(binaryMatch(magazine, note2))
+//  console.log('testing binaryMatch')
+//  console.log(binaryMatch(magazine, note))
+//  console.log(binaryMatch(magazine, note2))
 
